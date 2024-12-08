@@ -1,2 +1,5 @@
 .env
 .venv 
+backend-local-server\__pycache__
+backend-local-server\media_managment\__pycache__
+backend-local-server\persistence_services\__pycache__
