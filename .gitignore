@@ -1,5 +1,9 @@
 .env
 .venv 
+credentails.json
+token.json
+backend-local-server\credentails.json
+backend-local-server\token.json
 backend-local-server\__pycache__
 backend-local-server\media_managment\__pycache__
 backend-local-server\persistence_services\__pycache__
