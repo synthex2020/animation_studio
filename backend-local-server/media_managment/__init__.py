@@ -1,6 +1,6 @@
 from media_managment.video_manager import VideoManager
 from media_managment.image_manager import ImageManager
-
+from media_managment.sound_manager import SoundManager
 
 class MediaManager:
 
@@ -8,6 +8,7 @@ class MediaManager:
         self.working_dir = working_dir
         self.video_manager = None
         self.image_manager = None
+        self.sound_manager = None
         self.title = None
         self.source_path = None
         
@@ -27,6 +28,10 @@ class MediaManager:
     def init_image_manager(self, output_folder, frames_input_folder):
         self.image_manager = ImageManager(frames_input=frames_input_folder, output=output_folder)
 
+    #   INITALIZE THE SOUND MANAGER
+    def init_sound_manager(self):
+        self.sound_manager = SoundManager(output=self.working_dir)
+    
     def update_source(self, new_path):
         self.video_manager.update_source(new_path)
     
@@ -49,5 +54,11 @@ class MediaManager:
     def add_background(self, new_background):
         self.image_manager.add_new_background(new_background=new_background)
 
+    #   SOUND MANAGER FUNCTIONS 
 
+    def extract_sound(self, video_file, title):
+        self.sound_manager.extract_sound(video_file, title)
+
+    def add_sound(self, video_file, audio_file, title):
+        self.sound_manager.add_sound(video_file, audio_file, title)
     

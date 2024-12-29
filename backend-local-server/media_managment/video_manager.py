@@ -48,23 +48,34 @@ class VideoManager:
         success = 1
 
         #   VIDEO OBJECT CALLS READ TO EXTRACT 
-        # 
-        #  
+          
         success, image = video_object.read()
+
+        #   PROGRESS COUNTER 
+        progress = []
+
+        if not success:
+            return Exception('error file not found')
         
         while success:
             #   SAVE THE FRAMES WITH RELEVANT COUNT 
             if image is not None:
-                cv2.imwrite(f'{self.working_dir}\\backend-local-server\\generation_output\\frames\\{count}.png', image)
+                cv2.imwrite(f'{self.working_dir}\\generation_output\\frames\\{count}.png', image)
                 count += 1
+
+                progress.append('#')
+                print(progress, end='')
             #   READ THE NEXT FRAME 
             success, image = video_object.read()
+
         
         #   UPDATE THE LIST OF IMAGES PROPERTY 
         self.number_images = count
         
         #   FREE UP RESOURCES 
         video_object.release()
+
+        print('\rFrames seperated.', end='', flush=True)
 
     #   PUT FRAMES TOGETHER INTO VIDEO 
     def render_frames_to_video(self):
